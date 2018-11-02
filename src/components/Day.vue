@@ -1,24 +1,27 @@
-<template lang='pug'>
-  div
-    .datepicker__tooltip(v-if='showTooltip && this.options.hoveringTooltip' v-html='tooltipMessageDisplay')
-    .datepicker__month-day(
-      type="button"
-      @click.prevent.stop='dayClicked(date)'
-      @keyup.enter.prevent.stop='dayClicked(date)'
-      v-text='dayNumber'
-      :class='dayClass'
-      :style='isToday ? "border: 1px solid #00c690" : ""'
-      :tabindex="tabIndex"
-      ref="day"
-    )
+<template>
+    <div>
+        <div class="datepicker__tooltip" v-if='showTooltip && this.options.hoveringTooltip' v-html='tooltipMessageDisplay'>
+        </div>
+        <div
+                type="button"
+                class="datepicker__month-day"
+                @click.prevent.stop='dayClicked(date)'
+                @keyup.enter.prevent.stop='dayClicked(date)'
+                v-text='dayNumber'
+                :class='dayClass'
+                :style='isToday ? "border: 1px solid #00c690" : ""'
+                :tabindex="tabIndex"
+                ref="day">
+        </div>
+    </div>
 </template>
 
 <script>
-import fecha from 'fecha';
+    import fecha from 'fecha';
 
-import Helpers from './helpers.js'
+    import Helpers from './helpers.js'
 
-export default {
+    export default {
   name: 'Day',
 
   props: {
